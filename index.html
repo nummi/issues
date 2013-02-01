@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flight Test</title>
+  </head>
+
+  <body>
+  <table id="issue_items"><tbody id="issue_items_TB"></tbody></table>
+
+  <script src="./components/jquery/jquery.js"></script>
+  <script src='./components/es5-shim/es5-shim.min.js'></script>
+  <script src='./components/es5-shim/es5-sham.min.js'></script>
+  <script data-main="requireMain.js" src='./components/requirejs/require.js'></script>
+
+    <script>
+      require(['app/boot'], function(initialize) {
+        initialize();
+      });
+    </script>
+
+  </body>
+</html>
