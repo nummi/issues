@@ -104,7 +104,5 @@ define(
         }
       ]
     };
-    return data;
   }
 );
-

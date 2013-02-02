@@ -15,7 +15,7 @@ define(
 
     function initialize() {
       IssueItemsData.attachTo(document);
-      IssueItemsUI.attachTo('#issue_items', {itemContainerSelector: '#issue_items_TB'});
+      IssueItemsUI.attachTo('#issue_items');
     }
 
     return initialize;

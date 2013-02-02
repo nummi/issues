@@ -2,11 +2,21 @@
 <html>
   <head>
     <title>Flight Test</title>
+    <link rel="stylesheet" href="app.css">
   </head>
 
   <body>
-  <table id="issue_items"><tbody id="issue_items_TB"></tbody></table>
+  <div class="scroll-view">
+    <div id="issue_items" class="master-view list-view scroll-view">
+      <div class="list-view-content"></div>
+    </div>
 
+    <div id="issue_item" class="detail-view scroll-view">
+      <div class="detail-view-content"></div>
+    </div>
+  </div>
+
+  <script src="./components/moment/moment.min.js"></script>
   <script src="./components/jquery/jquery.js"></script>
   <script src='./components/es5-shim/es5-shim.min.js'></script>
   <script src='./components/es5-shim/es5-sham.min.js'></script>
