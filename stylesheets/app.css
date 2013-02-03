@@ -1,4 +1,9 @@
-* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }A
+* {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
 
 html, body {
   font-family: helvetica, arial, sans-serif;
@@ -18,15 +23,27 @@ html, body {
   left: 0;
 }
 
+/* Master Detail View ------------------------ */
+
 .master-view {
   right: auto;
   width: 300px;
+  border-right: 1px solid #A4A4A4;
   background: #fff;
 }
 
 .detail-view {
   left: 300px;
+  padding: 20px;
+  background: #f6f6f6;
 }
+
+.detail-view h1 {
+  margin-bottom: 1em;
+  font-size: 21px;
+}
+
+/* List View ------------------------ */
 
 .list-view-row {
   display: block;

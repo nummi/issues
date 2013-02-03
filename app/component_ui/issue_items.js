@@ -13,7 +13,7 @@ define(
 
     function issueItems() {
 
-      var selectedItems;
+      var selectedItem;
 
       this.defaultAttrs({
         selectedClass: 'selected',
@@ -30,7 +30,8 @@ define(
       }
 
       this.updateItemSelections = function(ev, data) {
-        selectedItems = data.selectedIds;
+        selectedItem = data.selectedIds;
+        this.trigger('uiIssueRequested', selectedItem);
       }
 
       this.after('initialize', function() {

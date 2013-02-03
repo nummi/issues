@@ -14,8 +14,15 @@ define(
         </div>\
        {{/issueItems}}';
 
+    var issue =
+      '<h1>{{issue.title}}</h1>\
+       <div>{{issue.body}}</div>';
 
-    return { issueItem: issueItem }
+
+    return {
+      issueItem : issueItem,
+      issue     : issue
+    }
   }
 
 );

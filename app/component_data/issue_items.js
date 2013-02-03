@@ -38,9 +38,8 @@ define(
         return {id: itemData.id, title: itemData.title, updated_at: date.fromNow()};
       };
 
-      this.after("initialize", function() {
-        this.on("uiIssueItemsRequested", this.serveIssueItems);
-        this.on("dataIssueItemsRefreshRequested", this.serveIssueItems);
+      this.after('initialize', function() {
+        this.on('uiIssueItemsRequested', this.serveIssueItems);
       });
     }
   }
