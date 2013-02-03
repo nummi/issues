@@ -4,42 +4,34 @@ define(
 
   [
     'components/flight/lib/component',
-    'components/mustache/mustache',
-    'app/issue_data',
-    'app/templates'
+    'app/issue_data'
   ],
 
-  function(defineComponent, Mustache, dataStore, templates) {
+  function(defineComponent, dataStore) {
     return defineComponent(issueItems);
 
     function issueItems() {
 
-      this.serveIssueItems = function(ev, data) {
-        this.trigger('dataIssueItemsServed', { markup: this.renderItems(this.assembleItems()) });
+      this.getIssues = function(ev, data) {
+        this.trigger('issuesDataDidLoad', { issues: this.massageData() });
       };
 
-      this.renderItems = function(items) {
-        return Mustache.render(templates.issueItem, {issueItems: items});
-      };
+      this.massageData = function() {
+        var issues = [];
 
-      this.assembleItems = function() {
-        var items = [];
-
-        dataStore.forEach(function(each) {
-          items.push(this.getItemForView(each));
+        dataStore.forEach(function(issue) {
+          issues.push({
+            id: issue.id,
+            title: issue.title,
+            updated_at: moment(issue.updated_at).fromNow()
+          });
         }, this);
 
-        return items;
-      };
-
-      this.getItemForView = function(itemData) {
-        var date = moment(itemData.updated_at);
-        //date.format('MM/DD/YYYY - hh:mm:ssa')
-        return {id: itemData.id, title: itemData.title, updated_at: date.fromNow()};
+        return issues;
       };
 
       this.after('initialize', function() {
-        this.on('uiIssueItemsRequested', this.serveIssueItems);
+        this.on('issuesRequested', this.getIssues);
       });
     }
   }

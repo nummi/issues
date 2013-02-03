@@ -4,40 +4,43 @@ define(
 
   [
     'components/flight/lib/component',
-    './with_select'
+    './with_select',
+    'components/mustache/mustache',
+    'app/templates'
   ],
 
-  function(defineComponent, withSelect) {
+  function(defineComponent, withSelect, Mustache, templates) {
 
     return defineComponent(issueItems, withSelect);
 
     function issueItems() {
 
-      var selectedItem;
-
       this.defaultAttrs({
         selectedClass: 'selected',
         allowMultiSelect: false,
-        selectionChangedEvent: 'uiIssueItemSelectionChanged',
-        //selectors
+        selectionChangedEvent: 'uiIssueSelectionDidChange',
         itemSelector: '.list-view-row',
         selectedItemSelector: '.list-view-row.selected'
       });
 
-      this.renderItems = function(ev, data) {
-        this.$node.find('.list-view-content').html(data.markup);
-        this.trigger('uiIssueItemSelectionChanged', {selectedIds: []});
+      this.renderItems = function(data) {
+        return Mustache.render(templates.issueItem, {issues: data.issues});
+      };
+
+      this.appendItems = function(ev, issuesData) {
+        var html = this.renderItems(issuesData);
+        this.$node.find('.list-view-content').html(html);
+        this.trigger('uiIssueSelectionDidChange', {selectedIds: []});
       }
 
-      this.updateItemSelections = function(ev, data) {
-        selectedItem = data.selectedIds;
-        this.trigger('uiIssueRequested', selectedItem);
+      this.updateItemSelection = function(ev, data) {
+        this.trigger('uiIssueRequested', data.selectedIds);
       }
 
       this.after('initialize', function() {
-        this.on(document, 'dataIssueItemsServed', this.renderItems);
-        this.on('uiIssueItemSelectionChanged', this.updateItemSelections);
-        this.trigger('uiIssueItemsRequested');
+        this.on(document, 'issuesDataDidLoad', this.appendItems);
+        this.on('uiIssueSelectionDidChange', this.updateItemSelection);
+        this.trigger('issuesRequested');
       });
     }
   }

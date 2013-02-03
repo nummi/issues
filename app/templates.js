@@ -3,7 +3,7 @@
 define(
   function() {
     var issueItem =
-      '{{#issueItems}}\
+      '{{#issues}}\
         <div id="{{id}}" class="list-view-row">\
           <div class="list-view-row-main-title">\
             {{title}}\
@@ -12,7 +12,7 @@ define(
             Updated {{updated_at}}\
           </div>\
         </div>\
-       {{/issueItems}}';
+       {{/issues}}';
 
     var issue =
       '<h1>{{issue.title}}</h1>\
