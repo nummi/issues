@@ -12,32 +12,32 @@ define(
 
     function issuesDataSource() {
 
-      this.getIssues = function(ev, data) {
-        this.trigger('issuesDataDidLoad', { issues: this.formatIssuesData() });
+      this.getAllIssues = function(ev) {
+        var issuesData = dataStore;
+        this.trigger('issuesDataDidLoad', { issues: this.formatIssuesData(issuesData) });
       };
 
-      this.getIssue = function(ev, issueID) {
-        issueID = parseInt(issueID);
+      this.getIssueByID = function(ev, requestedIssueID) {
+        var requestedIssueData = dataStore.filter(function(issue) {
+                                   return parseInt(requestedIssueID) === issue.id
+                                 })[0];
 
-        var issueData = dataStore.filter(function(issue) {
-                          return issueID === issue.id
-                        })[0];
-
-        this.trigger('issueDataDidLoad', { issue: this.formatSingleIssueData(issueData) });
+        this.trigger('issueDataDidLoad', { issue: this.formatSingleIssueData(requestedIssueData) });
       };
 
-      this.formatIssuesData = function() {
-        var issues = [];
 
-        dataStore.forEach(function(issue) {
-          issues.push({
+      this.formatIssuesData = function(issuesData) {
+        var formattedIssues = [];
+
+        issuesData.forEach(function(issue) {
+          formattedIssues.push({
             id: issue.id,
             title: issue.title,
             updated_at: moment(issue.updated_at).fromNow()
           });
         }, this);
 
-        return issues;
+        return formattedIssues;
       };
 
       this.formatSingleIssueData = function(issueData) {
@@ -50,8 +50,8 @@ define(
 
 
       this.after('initialize', function() {
-        this.on('issuesRequested', this.getIssues);
-        this.on('issueRequested', this.getIssue);
+        this.on('issuesRequested', this.getAllIssues);
+        this.on('issueRequested', this.getIssueByID);
       });
 
     } // issuesDataSource
