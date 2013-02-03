@@ -13,10 +13,10 @@ define(
     function issuesDataSource() {
 
       this.getIssues = function(ev, data) {
-        this.trigger('issuesDataDidLoad', { issues: this.massageData() });
+        this.trigger('issuesDataDidLoad', { issues: this.formatData() });
       };
 
-      this.massageData = function() {
+      this.formatData = function() {
         var issues = [];
 
         dataStore.forEach(function(issue) {

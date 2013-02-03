@@ -3,21 +3,24 @@
 define(
 
   [
-    'components/flight/lib/component'
+    'components/flight/lib/component',
+    'components/mustache/mustache',
+    'app/templates'
   ],
 
-  function(defineComponent) {
+  function(defineComponent, Mustache, templates) {
 
-    return defineComponent(issueItems);
+    return defineComponent(issueUI);
 
-    function issueItems() {
+    function issueUI() {
 
-      this.renderItems = function(ev, data) {
-        this.$node.find('.detail-view-content').html(data.markup);
-      }
+      this.appendItem = function(ev, data) {
+        var html = Mustache.render(templates.issue, {issue: data.issue})
+        this.$node.find('.detail-view-content').html(html);
+      };
 
       this.after('initialize', function() {
-        this.on(document, 'issueDataDidLoad', this.renderItems);
+        this.on(document, 'issueDataDidLoad', this.appendItem);
       });
     }
   }

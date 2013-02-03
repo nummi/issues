@@ -22,19 +22,14 @@ define(
         selectedItemSelector: '.list-view-row.selected'
       });
 
-      this.renderItems = function(data) {
-        return Mustache.render(templates.issueItem, {issues: data.issues});
-      };
-
-      this.appendItems = function(ev, issuesData) {
-        var html = this.renderItems(issuesData);
+      this.appendItems = function(ev, data) {
+        var html = Mustache.render(templates.issueItem, {issues: data.issues});
         this.$node.find('.list-view-content').html(html);
-        this.trigger('uiIssueSelectionDidChange', {selectedIds: []});
-      }
+      };
 
       this.updateItemSelection = function(ev, data) {
         this.trigger('issueRequested', data.selectedIds);
-      }
+      };
 
       this.after('initialize', function() {
         this.on(document, 'issuesDataDidLoad', this.appendItems);
