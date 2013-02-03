@@ -10,10 +10,9 @@ define(
   ],
 
   function(defineComponent, withSelect, Mustache, templates) {
+    return defineComponent(issuesUI, withSelect);
 
-    return defineComponent(issueItems, withSelect);
-
-    function issueItems() {
+    function issuesUI() {
 
       this.defaultAttrs({
         selectedClass: 'selected',
@@ -34,7 +33,7 @@ define(
       }
 
       this.updateItemSelection = function(ev, data) {
-        this.trigger('uiIssueRequested', data.selectedIds);
+        this.trigger('issueRequested', data.selectedIds);
       }
 
       this.after('initialize', function() {
@@ -42,6 +41,7 @@ define(
         this.on('uiIssueSelectionDidChange', this.updateItemSelection);
         this.trigger('issuesRequested');
       });
-    }
+
+    } // issuesUI
   }
 );

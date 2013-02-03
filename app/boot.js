@@ -3,27 +3,27 @@
 define(
 
   [
-    'app/component_data/issue_items',
-    'app/component_ui/issue_items',
+    'app/component_data/issuesDataSource',
+    'app/component_ui/issuesUI',
 
-    'app/component_data/issue',
-    'app/component_ui/issue'
+    'app/component_data/issueDataSource',
+    'app/component_ui/issueUI'
   ],
 
   function(
-    IssueItemsData,
-    IssueItemsUI,
+    IssuesDataSource,
+    IssuesUI,
 
-    IssueData,
+    IssueDataSource,
     IssueUI
   ) {
 
 
     function initialize() {
-      IssueItemsData.attachTo(document);
-      IssueItemsUI.attachTo('#issue_items');
+      IssuesDataSource.attachTo(document);
+      IssuesUI.attachTo('#issue_items');
 
-      IssueData.attachTo(document);
+      IssueDataSource.attachTo(document);
       IssueUI.attachTo('#issue_item');
     }
 

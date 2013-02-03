@@ -17,8 +17,7 @@ define(
       }
 
       this.after('initialize', function() {
-        this.on(document, 'dataIssueServed', this.renderItems);
-        this.trigger('uiIssueItemsRequested');
+        this.on(document, 'issueDataDidLoad', this.renderItems);
       });
     }
   }

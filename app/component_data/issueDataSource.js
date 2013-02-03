@@ -16,7 +16,7 @@ define(
 
       this.serveIssue = function(ev, issueID) {
         if(!issueID) { return; }
-        this.trigger('dataIssueServed',
+        this.trigger('issueDataDidLoad',
                      { markup: this.renderItem( this.getItemForView(issueID) ) });
       };
 
@@ -37,10 +37,8 @@ define(
       };
 
       this.after('initialize', function() {
-        this.on('uiIssueRequested', this.serveIssue);
-        this.on('dataIssueRefreshRequested', this.serveIssue);
+        this.on('issueRequested', this.serveIssue);
       });
     }
   }
 );
-

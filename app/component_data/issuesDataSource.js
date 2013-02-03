@@ -8,9 +8,9 @@ define(
   ],
 
   function(defineComponent, dataStore) {
-    return defineComponent(issueItems);
+    return defineComponent(issuesDataSource);
 
-    function issueItems() {
+    function issuesDataSource() {
 
       this.getIssues = function(ev, data) {
         this.trigger('issuesDataDidLoad', { issues: this.massageData() });
@@ -33,6 +33,7 @@ define(
       this.after('initialize', function() {
         this.on('issuesRequested', this.getIssues);
       });
-    }
+
+    } // issuesDataSource
   }
 );
