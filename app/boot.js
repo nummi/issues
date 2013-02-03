@@ -4,21 +4,20 @@ define(
 
   [
     'app/component_data/issuesDataSource',
-    'app/component_ui/issuesUI',
-    'app/component_ui/issueUI'
+    'app/component_ui/issueListingUI',
+    'app/component_ui/issueDetailUI'
   ],
 
   function(
     IssuesDataSource,
-    IssuesUI,
-    IssueUI
+    IssueListingUI,
+    IssueDetailUI
   ) {
-
 
     function initialize() {
       IssuesDataSource.attachTo(document);
-      IssuesUI.attachTo('#issue_items');
-      IssueUI.attachTo('#issue_item');
+      IssueListingUI.attachTo('#issue_items');
+      IssueDetailUI.attachTo('#issue_item');
     }
 
     return initialize;

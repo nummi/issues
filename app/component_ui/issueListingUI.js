@@ -4,15 +4,15 @@ define(
 
   [
     'components/flight/lib/component',
-    './with_select',
+    'app/mixins/with_select',
     'components/mustache/mustache',
     'app/templates'
   ],
 
   function(defineComponent, withSelect, Mustache, templates) {
-    return defineComponent(issuesUI, withSelect);
+    return defineComponent(issueListingUI, withSelect);
 
-    function issuesUI() {
+    function issueListingUI() {
 
       this.defaultAttrs({
         selectedClass: 'selected',
@@ -37,6 +37,6 @@ define(
         this.trigger('issuesRequested');
       });
 
-    } // issuesUI
+    } // issueListingUI
   }
 );
