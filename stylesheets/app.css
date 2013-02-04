@@ -34,13 +34,32 @@ html, body {
 
 .detail-view {
   left: 300px;
-  padding: 20px;
   background: #f6f6f6;
 }
 
-.detail-view h1 {
-  margin-bottom: 1em;
-  font-size: 21px;
+.detail-heading {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 0 1px 0 rgba(255,255,255, 1);
+  background: #fff;
+  background-image: -webkit-linear-gradient(#ffffff, #e6e6e6);
+}
+
+.detail-view-content-select {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  margin-top: -75px;
+  margin-left: -150px;
+  padding-top: 120px;
+  color: #555;
+  font-weight: bold;
+  text-align: center;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABlCAYAAABUfC3PAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAw1JREFUeNrsnTFoE3EYxa9tWsRqVQQHl1RXUSsiOihGJwfFOAs2Cu7qEHFSxKVZqrODcVaw3eogRnBxah10cIogiJNtk7Tg0Pg+TfA4k/ZoCvnu+D145P7pOwLv9b67F5LLwNTUVNDCIfGeeEHcG/zDHnExtLbtXcH/OCBWY+iOiQuhte2T7UF3TqyE1rbP0R50V8SZ0Nr2ORtDZ9uXO+iui+V1dObTnHi/WCx+sScyrT8MiE/F92JO/BbaaSnyItmWPorlmLpaZH1EHOxBV4+sz4hDPegakfXFkE/r6a6Kwx10Kxvo9ouT4ddobzTF0+JasDGWgniIq1veYl1ti3X1mLrGZnQ6OuxIuRt+LvyftxYAF8hggR+USqVRPdyxI+WHOIIlLmDT6qGFsk/8hR/9h84vq0GXqxnQZxAKoQBCSSaeDLbezgB+Tva3LJQFrGB8AUJJXKv/M76q4hh2uMG0hZLliGF8AUIhFEAoqcTzdqOv4YWbRl/I0OgZX4BQktvobXztxA5fjd4+JTiEF4wvQCiEAgglnY3eviJQxwtfjb6CFYwvQCiJa/QFGr0/PKPRM74AoRAKIJT0YpZG76/R52n0jC9AKAlu9Da+dmCHr0Zvd+jhzhOML0AohAIIJX14Z6HYbfcaeOGm0efsqmsGKxhfgFAS1+jzNHp/eEWjZ3wBQiEUQCgpb/R2g/wVvPDV6MtYwfgChJLMRm9vSI5ih69Gb796M4wXjC9AKIQCCCV1+Eij99foJ2j0jC9AKMls9DkavT+8pdEzvgChEAoglJQ3+tviKl74avSPsYLxBQglmY2+LG7HDl+NflIcwQvGFyAUQgGEkjp8pdH7a/TjNHrGF4gDvhXsq83bndQPtxv9NixxgTFx3kK5JB7EDxfIij8tlNfB309Jgv7jmjhn55RH4gdbiG/wpW/nk/N6uCmesiPlc+tImRUfYE9fAjne8v+Gesqn9iXxS/Gk+D2iL4jNDqxEdPkeddFf+s7F1E100VU3qRvvoluMqWtGdLtj6ubFEwrkhS1+CzAA9ILQ3PcRI5EAAAAASUVORK5CYII=) no-repeat 50% 0;
 }
 
 /* List View ------------------------ */
@@ -80,4 +99,17 @@ html, body {
 .selected .list-view-row-main-title,
 .selected .list-view-row-sub-title {
   color: #fff;
+}
+
+
+
+
+.detail-body {
+  padding: 0 30px;
+}
+
+.detail-body p,
+.detail-body pre,
+.detail-body li {
+  margin-bottom: 1em;
 }

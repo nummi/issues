@@ -15,8 +15,8 @@ define(
        {{/issues}}';
 
     var issue =
-      '<h1>{{issue.title}}</h1>\
-       <div>{{issue.body}}</div>';
+      '<div class="detail-heading">{{issue.title}}</div>\
+       <div class="detail-body"></div>';
 
 
     return {

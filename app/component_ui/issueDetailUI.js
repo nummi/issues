@@ -16,7 +16,10 @@ define(
 
       this.appendItem = function(ev, data) {
         var html = Mustache.render(templates.issue, {issue: data.issue})
+        var body = markdown.toHTML(data.issue.body);
         this.$node.find('.detail-view-content').html(html);
+        this.$node.find('.detail-body').html(body);
+
       };
 
       this.after('initialize', function() {
