@@ -15,7 +15,13 @@ define(
        {{/issues}}';
 
     var issue =
-      '<div class="detail-heading">{{issue.title}}</div>\
+      '<div class="detail-heading">{{issue.number}} - {{issue.title}}</div>\
+       <div class="detail-meta">\
+         <div class="detail-meta-item"><span>State:</span> {{issue.state}}</div>\
+         <div class="detail-meta-item"><span>Author:</span> {{issue.author}}</div>\
+         <div class="detail-meta-item"><span>Created:</span> {{issue.created}}</div>\
+         <div class="detail-meta-item"><span>Last updated:</span> {{issue.updated}}</div>\
+       </div>\
        <div class="detail-body"></div>';
 
 

@@ -42,9 +42,14 @@ define(
 
       this.formatSingleIssueData = function(issueData) {
         return {
-          id    : issueData.id,
-          title : issueData.title,
-          body  : issueData.body
+          id      : issueData.id,
+          number  : issueData.number,
+          title   : issueData.title,
+          body    : issueData.body,
+          author  : issueData.user.login,
+          state   : issueData.state,
+          created : moment(issueData.created_at).fromNow(),
+          updated : moment(issueData.updated_at).fromNow()
         };
       };
 

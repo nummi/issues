@@ -34,11 +34,10 @@ html, body {
 
 .detail-view {
   left: 300px;
-  background: #f6f6f6;
+  background: #fefefe;
 }
 
 .detail-heading {
-  margin-bottom: 20px;
   border-bottom: 1px solid #ccc;
   padding: 10px 30px;
   font-size: 18px;
@@ -47,6 +46,20 @@ html, body {
   background: #fff;
   background-image: -webkit-linear-gradient(#ffffff, #e6e6e6);
 }
+
+.detail-meta {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  background: #fff;
+}
+
+.detail-meta-item {
+  padding: 5px 30px 0 30px;
+  font-size: 12px;
+}
+
+.detail-meta-item span { color: #777; }
 
 .detail-view-content-select {
   position: absolute;
@@ -106,6 +119,7 @@ html, body {
 
 .detail-body {
   padding: 0 30px;
+  font-size: 13px;
 }
 
 .detail-body p,
