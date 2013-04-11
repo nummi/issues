@@ -1,6 +1,6 @@
 issues
 ============
 
-Ember JS
+Angular
 
 Open index.html in your browser
