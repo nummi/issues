@@ -81,6 +81,7 @@ html, body {
   display: block;
   border-bottom: 1px solid #ddd;
   padding: 5px 0;
+  text-decoration: none;
   cursor: default;
 }
 
@@ -105,12 +106,12 @@ html, body {
 
 /* List View selected styles ----------------------- */
 
-.list-view-row.selected {
+.list-view-row.active {
   background: #335BC8;
 }
 
-.selected .list-view-row-main-title,
-.selected .list-view-row-sub-title {
+.active .list-view-row-main-title,
+.active .list-view-row-sub-title {
   color: #fff;
 }
 

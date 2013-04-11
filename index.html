@@ -1,35 +1,58 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Flight Test</title>
+    <title>Ember Test</title>
     <link rel="stylesheet" href="stylesheets/app.css">
   </head>
-
   <body>
-  <div class="scroll-view">
-    <div id="issue_items" class="master-view list-view scroll-view">
-      <div class="list-view-content"></div>
-    </div>
 
-    <div id="issue_item" class="detail-view scroll-view">
-      <div class="detail-view-content">
-        <div class="detail-view-content-select">Select an Issue</div>
-      </div>
-    </div>
-  </div>
-
-  <script src="./components/moment/moment.min.js"></script>
-  <script src="./components/markdown/markdown.js"></script>
-  <script src="./components/jquery/jquery.js"></script>
-  <script src='./components/es5-shim/es5-shim.min.js'></script>
-  <script src='./components/es5-shim/es5-sham.min.js'></script>
-  <script data-main="requireMain.js" src='./components/requirejs/require.js'></script>
-
-    <script>
-      require(['app/boot'], function(initialize) {
-        initialize();
-      });
+    <script type="text/x-handlebars" data-template-name="application">
+      {{outlet}}
     </script>
+
+    <script type="text/x-handlebars" data-template-name="issues">
+      <div class="scroll-view">
+        <div id="issue_items" class="master-view list-view scroll-view">
+          <div class="list-view-content">
+            {{#each issue in controller}}
+              {{#linkTo 'issue' issue class="list-view-row"}}
+                <div class="list-view-row-main-title">{{issue.title}}</div>
+                <div class="list-view-row-sub-title">Updated {{date issue.updated_at}}</div>
+              {{/linkTo}}
+            {{/each}}
+          </div>
+        </div>
+
+        <div id="issue_item" class="detail-view scroll-view">
+          <div class="detail-view-content">
+            <!--<div class="detail-view-content-select">Select an Issue</div>-->
+            {{outlet}}
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="issue">
+      <div class="detail-heading">{{number}} - {{title}}</div>
+
+      <div class="detail-meta">
+        <div class="detail-meta-item"><span>State:</span> {{state}}</div>
+        <div class="detail-meta-item"><span>Created:</span> {{date created_at}}</div>
+        <div class="detail-meta-item"><span>Last updated:</span> {{date updated_at}}</div>
+      </div>
+
+      <div class="detail-body">{{markdown body}}</div>
+    </script>
+
+
+    <script src="javascripts/handlebars.js"></script>
+    <script src="javascripts/jquery-1.8.3.min.js"></script>
+    <script src="javascripts/moment.min.js"></script>
+    <script src="javascripts/showdown.min.js"></script>
+    <script src="javascripts/ember.js"></script>
+    <script src="javascripts/ember-data.js"></script>
+    <script src="javascripts/app.js"></script>
+    <script src="javascripts/issue_data.js"></script>
 
   </body>
 </html>
