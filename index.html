@@ -6,33 +6,31 @@
   </head>
   <body>
 
-    <script type="text/x-handlebars" data-template-name="application">
-      {{outlet}}
+    <div data-ng-view></div>
+
+    <script type="text/ng-template" id="issue.html">
+      ISSUE!
     </script>
 
-    <script type="text/x-handlebars" data-template-name="issues">
+    <script type="text/ng-template" id="issues.html">
       <div class="scroll-view">
+        <input ng-model="searchText">
         <div id="issue_items" class="master-view list-view scroll-view">
           <div class="list-view-content">
-            {{#each issue in controller}}
-              {{#linkTo 'issue' issue class="list-view-row"}}
-                <div class="list-view-row-main-title">{{issue.title}}</div>
-                <div class="list-view-row-sub-title">Updated {{date issue.updated_at}}</div>
-              {{/linkTo}}
-            {{/each}}
+            <input ng-model="searchText" style="display:block; width: 98%; margin: 5px auto;" placeholder="filter">
+            <a ng-repeat="issue in issues | filter:searchText" class="list-view-row" href="#/issues/{{issue.id}}">
+              <div class="list-view-row-main-title">{{issue.title}}</div>
+              <div class="list-view-row-sub-title">Updated {{issue.updated_at}}</div>
+            </a>
           </div>
         </div>
 
         <div id="issue_item" class="detail-view scroll-view">
           <div class="detail-view-content">
-            {{outlet}}
+            <div class="detail-view-content-select">Select an Issue</div>
           </div>
         </div>
       </div>
-    </script>
-
-    <script type="text/x-handlebars" data-template-name="issues/index">
-      <div class="detail-view-content-select">Select an Issue</div>
     </script>
 
     <script type="text/x-handlebars" data-template-name="issue">
@@ -50,8 +48,6 @@
 
     <script src="javascripts/angular.js"></script>
     <script src="javascripts/angular-resource.min.js"></script>
-    <script src="javascripts/handlebars.js"></script>
-    <script src="javascripts/jquery-1.8.3.min.js"></script>
     <script src="javascripts/moment.min.js"></script>
     <script src="javascripts/showdown.min.js"></script>
     <script src="javascripts/app.js"></script>

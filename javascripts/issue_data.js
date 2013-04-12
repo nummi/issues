@@ -1,4 +1,4 @@
-[
+window.issues_data = [
   {
     "updated_at": "2013-02-01T19:30:20Z",
     "assignee": null,
