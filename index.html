@@ -14,7 +14,9 @@
       <div class="scroll-view">
         <div id="issue_items" class="master-view list-view scroll-view">
           <div class="list-view-content">
-            {{#each issue in controller}}
+            {{view Em.TextField valueBinding="searchQuery" class="list-view-filter" placeholder="Filter"}}
+
+            {{#each issue in filteredAndSortedIssues}}
               {{#linkTo 'issue' issue class="list-view-row"}}
                 <div class="list-view-row-main-title">{{issue.title}}</div>
                 <div class="list-view-row-sub-title">Updated {{date issue.updated_at}}</div>

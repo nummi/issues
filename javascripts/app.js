@@ -11,6 +11,33 @@ window.App = Em.Application.create({
 });
 
 
+// CONTROLLERS:
+
+App.IssuesController = Em.ArrayController.extend({
+  searchQuery: '',
+
+  filteredAndSortedIssues: function() {
+    var issues      = this.get('content');
+    var searchQuery = this.get('searchQuery');
+
+    if(searchQuery !== '') {
+      var regex = new RegExp(searchQuery, 'i');
+
+      issues = issues.filter(function(i) {
+        return regex.test(i.get('title'));
+      });
+    }
+
+    return Em.ArrayProxy.createWithMixins(Em.SortableMixin, {
+      sortProperties: this.get('updated_at'),
+      sortAscending: false,
+      content: issues
+    });
+
+  }.property('searchQuery', 'content.@each')
+});
+
+
 
 // ROUTER:
 
