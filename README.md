@@ -8,12 +8,12 @@ A Github Issues web client to test web frameworks
 
 Branch: 'flight'
 
-##Ember JS (not started)
+##Ember JS (complete)
 *http://emberjs.com*
 
 Branch: 'ember'
 
-##AngularJS (not started)
+##AngularJS (WIP)
 *http://angularjs.com*
 
 Branch: 'angular'
